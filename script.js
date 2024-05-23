@@ -1,29 +1,33 @@
 const fields = document.querySelectorAll("div.field");
+const spans = document.querySelectorAll("span");
 
 const handleFieldClick = (event) => {
   const clickedField = event.target;
-  const randomField = Math.floor(Math.random() * (9 - 1) + 1);
+  const randomNum = Math.floor(Math.random() * 9);
   const span = clickedField.querySelector("span");
   if (!span.textContent) {
     span.textContent = "X";
+    clickedField.classList.add("player");
+    generateRandomField(randomNum);
   }
+  else{
+    return;
+  }
+};
 
-
-  clickedField.classList.add("player");
-  clickedField.setAttribute("data-index", "X");
-  generateRandomField(randomField);
-  const generateRandomField = (random) => {
-    if (
-      fields[random].textContent !== "O" &&
-      fields[random].textContent !== "X"
-    ) {
-      fields[random].classList.add("robot");
-      fields[random].textContent = "O";
-    } else {
-      randomField = Math.floor(Math.random() * (9 - 1) + 1);
-      generateRandomField(randomField);
-    }
-  };
+const generateRandomField = (random) => {
+  const randomSpan = fields[random].querySelector("span")
+  const randomField = fields[random]
+  if (
+    randomSpan.textContent !== "O" &&
+    randomSpan.textContent !== "X"
+  ) {
+    fields[random].classList.add("robot");
+    randomSpan.textContent = "O";
+  } else {
+    random = Math.floor(Math.random() * (9 - 1) + 1);
+    generateRandomField(random);
+  }
 };
 
 fields.forEach((field) => {
@@ -37,8 +41,8 @@ przyklad = [
 ];
 
 const findWinner = function (game) {
-  let czyskonczone = 0;
-  let checkWinner = [
+  const czyskonczone = 0;
+  const checkWinner = [
     (Row1 = [game.at(0)[0], game.at(0)[1], game.at(0)[2]]),
     (Row2 = [game.at(0)[0], game.at(1)[1], game.at(2)[2]]),
     (Row3 = [game.at(0)[0], game.at(1)[1], game.at(2)[2]]),
@@ -82,17 +86,17 @@ const findWinner = function (game) {
 while (true) {
   board = [
     [
-      fields[0].textContent,
-      fields[1].textContent,
-      fields[3].textContent,
+      spans[0].textContent,
+      spans[1].textContent,
+      spans[3].textContent,
     ][
-      (fields[4].textContent,
-      fields[5].textContent,
-      fields[6].textContent)
+      (spans[4].textContent,
+      spans[5].textContent,
+      spans[6].textContent)
     ][
-      (fields[7].textContent,
-      fields[8].textContent,
-      fields[9].textContent)
+      (spans[7].textContent,
+      spans[8].textContent,
+      spans[9].textContent)
     ],
   ];
   if (findWinner(board) === "X") {
