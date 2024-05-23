@@ -1,0 +1,45 @@
+:root {
+    --color-1: lime;
+    --color-2: red;
+    --background-color-1: black;
+    --font-family-1: "Roboto", sans-serif;
+  }
+  body{
+    font-family: var(--font-family-1);
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color-1);
+  }
+
+  div#board{
+    display: flex;
+    outline: solid 2.5px white;
+    gap: 5px;
+    align-content: center;
+  }
+
+  div.column{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+  }
+
+  div.field{
+    background-color: var(--background-color-1);
+    outline: solid 5px white;
+    padding: 40px;
+  }
+
+  div.field > span{
+    font-size: 40px;
+  }
+
+  div.player{
+    background-color: var(--color-1);
+  }
+
+  div.robot{
+    background-color: var(--color-2);
+  }
