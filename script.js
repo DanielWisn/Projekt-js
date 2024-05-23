@@ -1,25 +1,24 @@
 const fields = document.querySelectorAll("div.field");
-const spans = document.querySelectorAll(".field > span");
 
-const handlefieldClick = (event) => {
+const handleFieldClick = (event) => {
   const clickedField = event.target;
   const randomField = Math.floor(Math.random() * (9 - 1) + 1);
-  const span = clickedField.querySelectorAll("span");
+  const span = clickedField.querySelector("span");
   if (!span.textContent) {
     span.textContent = "X";
   }
 
-  fields[0].setAttribute("data-index", "O");
+
   clickedField.classList.add("player");
   clickedField.setAttribute("data-index", "X");
   generateRandomField(randomField);
   const generateRandomField = (random) => {
     if (
-      fields[random].getAttribute("data-index") !== "O" &&
-      fields[random].getAttribute("data-index") !== "X"
+      fields[random].textContent !== "O" &&
+      fields[random].textContent !== "X"
     ) {
       fields[random].classList.add("robot");
-      fields[random].setAttribute("data-index", "O");
+      fields[random].textContent = "O";
     } else {
       randomField = Math.floor(Math.random() * (9 - 1) + 1);
       generateRandomField(randomField);
@@ -28,7 +27,7 @@ const handlefieldClick = (event) => {
 };
 
 fields.forEach((field) => {
-  field.addEventListener("click", handlefieldClick);
+  field.addEventListener("click", handleFieldClick);
 });
 
 przyklad = [
@@ -83,17 +82,17 @@ const findWinner = function (game) {
 while (true) {
   board = [
     [
-      fields[0].getAttribute("data-index"),
-      fields[1].getAttribute("data-index"),
-      fields[3].getAttribute("data-index"),
+      fields[0].textContent,
+      fields[1].textContent,
+      fields[3].textContent,
     ][
-      (fields[4].getAttribute("data-index"),
-      fields[5].getAttribute("data-index"),
-      fields[6].getAttribute("data-index"))
+      (fields[4].textContent,
+      fields[5].textContent,
+      fields[6].textContent)
     ][
-      (fields[7].getAttribute("data-index"),
-      fields[8].getAttribute("data-index"),
-      fields[9].getAttribute("data-index"))
+      (fields[7].textContent,
+      fields[8].textContent,
+      fields[9].textContent)
     ],
   ];
   if (findWinner(board) === "X") {
