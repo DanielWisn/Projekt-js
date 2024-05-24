@@ -1,34 +1,36 @@
 const fields = document.querySelectorAll("div.field");
-const spans = document.querySelectorAll(".field > span");
+const spans = document.querySelectorAll("span");
+const h2 = document.querySelector("h2");
 
-const handlefieldClick = (event) => {
+let gameEnd = false;
+
+const handleFieldClick = (event) => {
   const clickedField = event.target;
-  const randomField = Math.floor(Math.random() * (9 - 1) + 1);
-  const span = clickedField.querySelectorAll("span");
+  const randomNum = Math.floor(Math.random() * 9);
+  const span = clickedField.querySelector("span");
   if (!span.textContent) {
     span.textContent = "X";
+    clickedField.classList.add("player");
+    generateRandomField(randomNum);
+  } else {
+    return;
   }
+};
 
-  fields[0].setAttribute("data-index", "O");
-  clickedField.classList.add("player");
-  clickedField.setAttribute("data-index", "X");
-  generateRandomField(randomField);
-  const generateRandomField = (random) => {
-    if (
-      fields[random].getAttribute("data-index") !== "O" &&
-      fields[random].getAttribute("data-index") !== "X"
-    ) {
-      fields[random].classList.add("robot");
-      fields[random].setAttribute("data-index", "O");
-    } else {
-      randomField = Math.floor(Math.random() * (9 - 1) + 1);
-      generateRandomField(randomField);
-    }
-  };
+const generateRandomField = (random) => {
+  const randomSpan = fields[random].querySelector("span");
+  const randomField = fields[random];
+  if (randomSpan.textContent !== "O" && randomSpan.textContent !== "X") {
+    fields[random].classList.add("robot");
+    randomSpan.textContent = "O";
+  } else {
+    random = Math.floor(Math.random() * (9 - 1) + 1);
+    generateRandomField(random);
+  }
 };
 
 fields.forEach((field) => {
-  field.addEventListener("click", handlefieldClick);
+  field.addEventListener("click", handleFieldClick);
 });
 
 przyklad = [
@@ -55,12 +57,20 @@ const findWinner = function (game) {
       checkWinner[i].at(1) === "X" &&
       checkWinner[i].at(2) === "X"
     ) {
+      fields.forEach((field) => {
+        field.classList.add("player");
+      });
+      h2.textContent = "X";
       return "X";
     } else if (
       checkWinner[i].at(0) === "O" &&
       checkWinner[i].at(1) === "O" &&
       checkWinner[i].at(2) === "O"
     ) {
+      fields.forEach((field) => {
+        field.classList.add("robot");
+      });
+      h2.textContent = "O";
       return "O";
     }
   }
@@ -80,29 +90,22 @@ const findWinner = function (game) {
   }
 };
 
-while (true) {
+while (gameEnd === false) {
+  let amountOfMoves = 0;
+
   board = [
-    [
-      fields[0].getAttribute("data-index"),
-      fields[1].getAttribute("data-index"),
-      fields[3].getAttribute("data-index"),
-    ][
-      (fields[4].getAttribute("data-index"),
-      fields[5].getAttribute("data-index"),
-      fields[6].getAttribute("data-index"))
-    ][
-      (fields[7].getAttribute("data-index"),
-      fields[8].getAttribute("data-index"),
-      fields[9].getAttribute("data-index"))
-    ],
+    [spans[0].textContent, spans[1].textContent, spans[3].textContent],
+    [spans[4].textContent, spans[5].textContent, spans[6].textContent],
+    [spans[7].textContent, spans[8].textContent, spans[9].textContent],
   ];
-  if (findWinner(board) === "X") {
-    fields.forEach((field) => {
-      field.classList.add("player");
-    });
-  } else if (findWinner(board) === "O") {
-    fields.forEach((field) => {
-      field.classList.add("robot");
-    });
+  for (i in board) {
+    for (j in board[i]) {
+      if (j.textContent === "X" || j.textContent === "O") {
+        amountOfMoves += 1;
+      }
+    }
+  }
+  if (amountOfMoves >= 3) {
+    findWinner(board);
   }
 }

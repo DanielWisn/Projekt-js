@@ -1,45 +1,59 @@
 :root {
-    --color-1: lime;
-    --color-2: red;
-    --background-color-1: black;
-    --font-family-1: "Roboto", sans-serif;
-  }
-  body{
-    font-family: var(--font-family-1);
-    display: flex;
-    justify-content: center;    
-    align-items: center;
-    height: 100vh;
-    background-color: var(--background-color-1);
-  }
+  --color-1: lime;
+  --color-2: red;
+  --background-color-1: black;
+  --font-family-1: "Roboto", sans-serif;
+}
+body {
+  font-family: var(--font-family-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--background-color-1);
+}
 
-  div#board{
-    display: flex;
-    outline: solid 2.5px white;
-    gap: 5px;
-    align-content: center;
-  }
+h2 {
+  color: white;
+  z-index: 1;
+}
 
-  div.column{
-    display: flex;
-    flex-direction: column;
-    gap:5px;
-  }
+div#board {
+  display: flex;
+  outline: solid 2.5px white;
+  gap: 5px;
+  align-content: center;
+}
 
-  div.field{
-    background-color: var(--background-color-1);
-    outline: solid 5px white;
-    padding: 40px;
-  }
+div.column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-  div.field > span{
-    font-size: 40px;
-  }
+div.field {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: var(--background-color-1);
+  outline: solid 5px white;
+  padding: 60px;
+  flex-grow: 0;
+  justify-content: center;
+  align-items: center;
+}
 
-  div.player{
-    background-color: var(--color-1);
-  }
+div.field > span {
+  font-size: 20px;
+  z-index: 1;
+  color: var(--background-color-1);
+}
 
-  div.robot{
-    background-color: var(--color-2);
-  }
+div.player {
+  background-color: var(--color-1);
+}
+
+div.robot {
+  background-color: var(--color-2);
+}
