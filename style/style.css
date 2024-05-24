@@ -32,23 +32,15 @@ div.column {
   gap: 5px;
 }
 
-div.field {
-  display: flex;
-  width: 100px;
-  height: 100px;
-  background-color: var(--background-color-1);
-  outline: solid 5px white;
-  padding: 60px;
-  flex-grow: 0;
-  justify-content: center;
-  align-items: center;
-}
+  div.field{
+    background-color: var(--background-color-1);
+    outline: solid 5px white;
+    padding: 40px;
+  }
 
-div.field > span {
-  font-size: 20px;
-  z-index: 1;
-  color: var(--background-color-1);
-}
+  div.field > span{
+    font-size: 40px;
+  }
 
 div.player {
   background-color: var(--color-1);

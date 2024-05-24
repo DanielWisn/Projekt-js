@@ -1,9 +1,13 @@
 const fields = document.querySelectorAll("div.field");
 const spans = document.querySelectorAll("span");
+<<<<<<< HEAD
 const h2 = document.querySelector("h2");
 
 let gameEnd = false;
 
+=======
+
+>>>>>>> 1734c0a0a571952864fb1bf45045925ad174f1a3
 const handleFieldClick = (event) => {
   const clickedField = event.target;
   const randomNum = Math.floor(Math.random() * 9);
@@ -12,6 +16,7 @@ const handleFieldClick = (event) => {
     span.textContent = "X";
     clickedField.classList.add("player");
     generateRandomField(randomNum);
+<<<<<<< HEAD
   } else {
     return;
   }
@@ -21,6 +26,21 @@ const generateRandomField = (random) => {
   const randomSpan = fields[random].querySelector("span");
   const randomField = fields[random];
   if (randomSpan.textContent !== "O" && randomSpan.textContent !== "X") {
+    
+  }
+  else{
+    return;
+  }
+};
+
+const generateRandomField = (random) => {
+  const randomSpan = fields[random].querySelector("span")
+  const randomField = fields[random]
+  if (
+    randomSpan.textContent !== "O" &&
+    randomSpan.textContent !== "X"
+  ) {
+
     fields[random].classList.add("robot");
     randomSpan.textContent = "O";
   } else {
@@ -40,8 +60,8 @@ przyklad = [
 ];
 
 const findWinner = function (game) {
-  let czyskonczone = 0;
-  let checkWinner = [
+  const czyskonczone = 0;
+  const checkWinner = [
     (Row1 = [game.at(0)[0], game.at(0)[1], game.at(0)[2]]),
     (Row2 = [game.at(0)[0], game.at(1)[1], game.at(2)[2]]),
     (Row3 = [game.at(0)[0], game.at(1)[1], game.at(2)[2]]),
@@ -94,9 +114,25 @@ while (gameEnd === false) {
   let amountOfMoves = 0;
 
   board = [
+<<<<<<< HEAD
     [spans[0].textContent, spans[1].textContent, spans[3].textContent],
     [spans[4].textContent, spans[5].textContent, spans[6].textContent],
     [spans[7].textContent, spans[8].textContent, spans[9].textContent],
+=======
+    [
+      spans[0].textContent,
+      spans[1].textContent,
+      spans[3].textContent,
+    ][
+      (spans[4].textContent,
+      spans[5].textContent,
+      spans[6].textContent)
+    ][
+      (spans[7].textContent,
+      spans[8].textContent,
+      spans[9].textContent)
+    ],
+>>>>>>> 1734c0a0a571952864fb1bf45045925ad174f1a3
   ];
   for (i in board) {
     for (j in board[i]) {
