@@ -14,9 +14,56 @@ body {
   background-color: var(--background-color-1);
 }
 
-h2 {
+h2.player {
   color: white;
   z-index: 1;
+  margin-bottom: 16px;
+  animation: glowX 1s ease-in-out infinite alternate;
+}
+
+h2.robot {
+  color: white;
+  z-index: 1;
+  margin-bottom: 16px;
+  animation: glowO 1s ease-in-out infinite alternate;
+}
+
+h2.draw {
+  color: white;
+  z-index: 1;
+  margin-bottom: 16px;
+  animation: glowDraw 1s ease-in-out infinite alternate;
+}
+
+
+@-webkit-keyframes glowX {
+  from {
+    text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 20px lime, 0 0 30px lime, 0 0 40px lime, 0 0 50px lime, 0 0 60px lime;
+  }
+  
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px lime, 0 0 30px lime, 0 0 40px lime, 0 0 50px lime, 0 0 60px lime, 0 0 70px lime;
+  }
+}
+
+@-webkit-keyframes glowO {
+  from {
+    text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red;
+  }
+  
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
+  }
+}
+
+@-webkit-keyframes glowDraw {
+  from {
+    text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff;
+  }
+  
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+  }
 }
 
 div#board {
@@ -32,16 +79,20 @@ div.column {
   gap: 5px;
 }
 
-  div.field{
+div.field{
     background-color: var(--background-color-1);
     outline: solid 5px white;
     padding: 40px;
-  }
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-  div.field > span{
-    font-size: 40px;
-  }
-
+div.field > span{
+  font-size: 30px;
+}
 div.player {
   background-color: var(--color-1);
 }
